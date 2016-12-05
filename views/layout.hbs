@@ -15,17 +15,6 @@
     <script type="text/javascript">
       var sensorData = {};
       var data;
-      var x = d3.time.scale()
-        .domain([new Date(data[0].date), d3.time.hour.offset(new Date(data[data.length - 1].date), 1)])
-        .rangeRound([0, width - margin.left - margin.right]);
-
-      var xAxis = d3.svg.axis()
-        .scale(x)
-        .orient('bottom')
-        .ticks(d3.time.days, 1)
-        .tickFormat(d3.time.format('%a %d'))
-        .tickSize(0)
-        .tickPadding(8);
 
       var width = window.innerWidth,
           height = window.innerHeight;
@@ -44,19 +33,29 @@
             soilVal : d.soil,
             date: d.createDate
           };
+        var x = d3.time.scale()
+          .domain([new Date(data[0].date), d3.time.hour.offset(new Date(data[data.length - 1].date), 1)])
+          .rangeRound([0, width - margin.left - margin.right]);
+
+        var xAxis = d3.svg.axis()
+          .scale(x)
+          .orient('bottom')
+          .ticks(d3.time.days, 1)
+          .tickFormat(d3.time.format('%a %d'))
+          .tickSize(0)
+          .tickPadding(8);
         });
-        console.log("this is data: ",data);
-        svg.selectAll("circle")
-          .data(d3.values(data))
-          .enter()
-          .append("circle")
-          .attr("cx", function(d) { return d["light"]; })
-          .attr("cy", function(d) { return d["soil"]; })
-          .attr("r", 5)
+      console.log("this is data: ",data);
+      svg.selectAll("circle")
+        .data(d3.values(data))
+        .enter()
+        .append("circle")
+        .attr("cx", function(d) { return d["light"]; })
+        .attr("cy", function(d) { return d["soil"]; })
+        .attr("r", 5)
           // .attr("fill", function(d) {
           //   return country_attrs[d.id]["color"];
           // });
-
       });
     </script>
   </body>
