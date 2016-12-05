@@ -22,12 +22,7 @@
       var x_scale = d3.scale.linear().range([0, width]);
       var y_scale = d3.scale.linear().range([height, 0]);
 
-      var data_domain = d3.extent(data, function(d) { return d.value;})
-
-      console.log(data_domain)
-      var dot_height = d3.scale.linear()
-        .domain(data_domain)
-        .range([0, height])
+      
 
       var svg = d3.select("#content").append("svg")
         .attr("viewBox", "0 0 " + width + " " + height)
@@ -36,6 +31,7 @@
 
       d3.json("https://smartplant-sensordb.herokuapp.com/sensordata", function(error, data) {
         if (error) return console.warn(error);
+        console.log(data);
         data.forEach(function(d) {
           data[d.createDate] = {
             lightVal : d.light,
