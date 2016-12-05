@@ -13,6 +13,9 @@
     </div>
 
     <script type="text/javascript">
+      var sensorData = {};
+      var data = {};
+
       var width = window.innerWidth,
           height = window.innerHeight;
 
@@ -24,8 +27,8 @@
       d3.json("https://smartplant-sensordb.herokuapp.com/sensordata", function(error, countries) {
         if (error) return console.warn(error);
         console.log(countries);
-        countries.data.forEach(function(d) {
-          country_attrs[d.id] = d
+        sensorData.light.forEach(function(d) {
+          sensorData[d.id] = d
         });
       });
 
