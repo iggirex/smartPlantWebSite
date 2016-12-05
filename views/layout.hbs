@@ -51,8 +51,8 @@
           .data(d3.values(data))
           .enter()
           .append("circle")
-          .attr("cx", function(d) { return x_scale(d["soilVal"]); })
-          .attr("cy", function(d) { return y_scale(d["lightVal"]); })
+          .attr("cx", function(d) { return x_scale(d["lightVal"]); })
+          .attr("cy", function(d) { return y_scale(d["soilVal"]); })
           .attr("r", 5)
           // .attr("fill", function(d) {
           //   return country_attrs[d.id]["color"];
