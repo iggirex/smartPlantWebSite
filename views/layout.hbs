@@ -15,8 +15,8 @@
     <script type="text/javascript">
       var sensorData = {};
       var data;
-
-      var width = window.innerWidth,
+      var margin = {top: 40, right: 40, bottom: 40, left:40},
+          width = window.innerWidth,
           height = window.innerHeight;
 
       var svg = d3.select("#content").append("svg")
