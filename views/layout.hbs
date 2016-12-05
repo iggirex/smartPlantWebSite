@@ -44,6 +44,8 @@
         y_scale.domain(d3.extent(d3.values(data), function(d) {
           return d.lightVal;
         }));
+        console.log("YOOOO right herrree: ", data)
+        console.log("heyeheyehye this is d3.values(data): ", d3.values(data))
 
         svg.selectAll("circle")
           .data(d3.values(data))
