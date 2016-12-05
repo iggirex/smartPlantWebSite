@@ -21,8 +21,9 @@
         .attr("width", width)
         .attr("height", height);
 
-      d3.json("https://atlas.media.mit.edu/attr/country/", function(error, countries) {
+      d3.json("https://smartplant-sensordb.herokuapp.com/sensordata", function(error, countries) {
         if (error) return console.warn(error);
+        console.log(countries);
         countries.data.forEach(function(d) {
           country_attrs[d.id] = d
         });
