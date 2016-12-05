@@ -27,6 +27,12 @@
       d3.json("https://smartplant-sensordb.herokuapp.com/sensordata", function(error, data) {
         if (error) return console.warn(error);
         console.log("this is data: ",data);
+        data.forEach(function(d) {
+          data[d.createDate] = {
+            lightVal : d.light,
+            soilVal : d.soil
+          };
+        });
         // info.forEach(function(d) {
         //   data[d.id] = d
         //   console.log("this is data", data[d.id])
