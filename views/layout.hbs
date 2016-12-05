@@ -55,6 +55,13 @@
           .tickPadding(8);
         });
 
+        x_scale.domain(d3.extent(d3.values(data), function(d) {
+          return d.date;
+        }));
+        y_scale.domain(d3.extent(d3.values(data), function(d) {
+          return d.lightVal;
+        }));
+
         svg.selectAll("circle")
           .data(d3.values(data))
           .enter()
