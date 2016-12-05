@@ -24,10 +24,9 @@
         .attr("width", width)
         .attr("height", height);
 
-      d3.json("https://smartplant-sensordb.herokuapp.com/sensordata", function(error, json) {
+      d3.json("https://smartplant-sensordb.herokuapp.com/sensordata", function(error, data) {
         if (error) return console.warn(error);
-        data = json;
-        console.log("this is info: ",info);
+        console.log("this is data: ",data);
         // info.forEach(function(d) {
         //   data[d.id] = d
         //   console.log("this is data", data[d.id])
