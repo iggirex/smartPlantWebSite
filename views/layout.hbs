@@ -19,6 +19,9 @@
           width = window.innerWidth,
           height = window.innerHeight;
 
+      var x_scale = d3.scale.log().range([0, width]);
+      var y_scale = d3.scale.log().range([height, 0]);
+
       var svg = d3.select("#content").append("svg")
         .attr("viewBox", "0 0 " + width + " " + height)
         .attr("width", width)
