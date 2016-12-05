@@ -27,9 +27,9 @@
       d3.json("https://smartplant-sensordb.herokuapp.com/sensordata", function(error, info) {
         if (error) return console.warn(error);
         console.log(info);
-        sensorData.light.forEach(function(d) {
-          sensorData[d.id] = d
-          console.log(sensorData[d.id])
+        info.forEach(function(d) {
+          data[d.id] = d
+          console.log(data[d.id])
         });
       });
 
