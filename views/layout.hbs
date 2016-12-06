@@ -60,6 +60,10 @@
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css?family=Bad+Script|Cabin+Sketch:700|Indie+Flower|Lobster" rel="stylesheet">
   </head>
   <body>
@@ -67,129 +71,59 @@
       <div class="logo">
         <p>logo</p>
       </div>
-      <div class="data"><a href="/">
-        <p>Home</p>
-      </a></div>
-      <div class="data"><a href="/soil">
-        <p>Soil Humidity</p>
-      </a></div>
-      <div class="data"><a href="/light">
-        <p>Light</p>
-      </a></div>
+      <a href="/" class="data"><div>
+        <p class="navButton">Home</p>
+      </div></a>
+      <a href="/soil" class="data"><div>
+        <p class="navButton">Soil Humidity</p>
+      </div></a>
+      <a href="/light" class="data"><div>
+        <p class="navButton">Light</p>
+      </div></a>
     </div>
       {{{body}}}
 
-    <!-- <div id="lightChart">
-    </div>
-    <div id="soilChart">
+    <div class="footer" style="margin: 0 auto;">
     </div>
 
     <script type="text/javascript">
-      var sensorData = {};
-      var data;
-      var margin = {top: 40, right: 40, bottom: 40, left:40},
-          width = window.innerWidth - 50,
-          height = window.innerHeight - 100;
-
-      var time_scale = d3.time.scale()
-        .range([margin, width])
-        // .domain(time_extent)
-
-      // var data_domain = d3.extent(data, function(d) { return d.value;})
-      var data_domain = d3.scale.linear()
-        .domain([0, 1000])
-        .range([0, 1000])
-
-      console.log("this is data-domain", data_domain)
-      var dot_height = d3.scale.linear()
-        // .domain(data_domain)
-        .range([0, height])
-
-      var svg = d3.select("#lightChart").append("svg")
-        .attr("viewBox", "0 0 " + (width ) + " " + (height + 140))
-        .attr("width", width)
-        .attr("height", height);
-
-      d3.json("https://smartplant-sensordb.herokuapp.com/sensordata", function(error, data) {
-        if (error) return console.warn(error);
-        data = data.filter(function(data) {
-          if (!data.light) return false
-          else return true;
-        })
-        data = data.map(function(d) {
-          return {
-            lightVal : d.light,
-            soilVal : d.soil,
-            date:  new Date(d.createDate)
-          };
-        });
-
-        var time_extent = d3.extent(data, function(d) {
-          console.log(d['date'])
-            return d['date'];
-        })
-        console.log(time_extent)
-
-        var x_scale = d3.time.scale().range([0, width]);
-        var y_scale = d3.scale.linear().range([height -30, 0]);
-        var r_scale = d3.scale.linear().range([1, 4]);
-
-        var x_axis = d3.svg.axis()
-          .scale(x_scale)
-          .orient("bottom")
-          .tickFormat(d3.time.format("%x-%X"))
-          .ticks(10)
-
-        var y_axis = d3.svg.axis()
-          .scale(y_scale)
-          .orient("left")
-          .ticks(8)
-
-        x_scale.domain(d3.extent(d3.values(data), function(d) {
-          return d.date;
-        }));
-        y_scale.domain(d3.extent(d3.values(data), function(d) {
-          return d.lightVal;
-        }));
-        r_scale.domain(d3.extent(d3.values(data), function(d) {
-          return d.soilVal
-        }))
-        console.log("YOOOO right herrree: ", data)
-        console.log("heyeheyehye this is d3.values(data): ", d3.values(data));
-
-        svg.append("g")
-          .attr("transform", "translate(0, " +(height - 20) +")")
-          .attr("class", "axis")
-          .call(x_axis)
-          .selectAll("text")
-            .style("text-anchor", "end")
-            .attr("dx", "-.8em")
-            .attr("dy", ".15em")
-            .attr("transform", "rotate(-65)" )
-
-
-        // svg.append("g")
-        //   // .attr("transform", "translate(0, " +(height - 20) +")")
-        //   .attr("class", "axis")
-        //   .call(y_axis)
-        //   .selectAll("text")
-        //     .style("text-anchor", "end")
-
-
-        svg.selectAll("circle")
-          .data(d3.values(data))
-          .enter()
-          .append("circle")
-          .attr("cx", function(d) { return x_scale(d["date"]); })
-          .attr("cy", function(d) { return y_scale(d["lightVal"]); })
-          .attr("r", function(d) { return r_scale(d["soilVal"]); })
-          // .attr("fill", function(d) {
-          //   return country_attrs[d.id]["color"];
-          // });
-
-      });
-    </script> -->
-    <div class="footer" style="margin: 0 auto;">
-    </div>
+      // var parallaxElements = $('.parallaxOne'),
+      //   parallaxQuantity = parallaxElements.length;
+      //
+      // $(window).on('scroll', function () {
+      //
+      //   window.requestAnimationFrame(function () {
+      //
+      //     for (var i = 0; i < parallaxQuantity; i++) {
+      //       var currentElement = parallaxElements.eq(i);
+      //       var scrolled = $(window).scrollTop();
+      //
+      //       currentElement.css({
+      //         'transform': 'translate3d(0,' + scrolled * -0.2 + 'px, 0)'
+      //         });
+      //       }
+      //     });
+      //
+      //   });
+      //
+      //   var parallaxElements2 = $('.parallaxTwo'),
+      //     parallaxQuantity2 = parallaxElements.length;
+      //
+      //   $(window).on('scroll', function () {
+      //
+      //     window.requestAnimationFrame(function () {
+      //
+      //       for (var i = 0; i < parallaxQuantity2; i++) {
+      //         var currentElement = parallaxElements2.eq(i);
+      //         var scrolled = $(window).scrollTop();
+      //
+      //         currentElement.css({
+      //           'transform': 'translate3d(0,' + scrolled * -0.2 + 'px, 0)'
+      //           });
+      //         }
+      //       });
+      //
+      //     });
+    </script>
   </body>
 </html>
