@@ -6,4 +6,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/light', function(req, res, next) {
+  res.render('light', { title: 'Express' });
+});
+
+router.get('/soil', function(req, res, next) {
+  res.render('soil', {});
+});
+
 module.exports = router;

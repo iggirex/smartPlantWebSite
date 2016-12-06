@@ -1,70 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.js"></script>
-    <style media="screen">
-      html, body, div, span, applet, object, iframe,
-      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-      a, abbr, acronym, address, big, cite, code,
-      del, dfn, em, img, ins, kbd, q, s, samp,
-      small, strike, strong, sub, sup, tt, var,
-      b, u, i, center,
-      dl, dt, dd, ol, ul, li,
-      fieldset, form, label, legend,
-      table, caption, tbody, tfoot, thead, tr, th, td,
-      article, aside, canvas, details, embed,
-      figure, figcaption, footer, header, hgroup,
-      menu, nav, output, ruby, section, summary,
-      time, mark, audio, video {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 100%;
-        font: inherit;
-        vertical-align: baseline;
-      }
-      /* HTML5 display-role reset for older browsers */
-      article, aside, details, figcaption, figure,
-      footer, header, hgroup, menu, nav, section {
-        display: block;
-      }
-      body {
-        line-height: 1;
-      }
-      ol, ul {
-        list-style: none;
-      }
-      blockquote, q {
-        quotes: none;
-      }
-      blockquote:before, blockquote:after,
-      q:before, q:after {
-        content: '';
-        content: none;
-      }
-      table {
-        border-collapse: collapse;
-        border-spacing: 0;
-      }
-      axis {
-        margin-bottom: 50px;
-      }
-      g.tick {
-        text-anchor: end;
-      }
-    </style>
-    <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+<h1>Light Levels</h1>
+<h3>{{info.each}}</h3>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.js"></script>
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-  </head>
-  <body>
-      {{{body}}}
 
-    <!-- <div id="lightChart">
+
+    <div id="lightChart">
     </div>
     <div id="soilChart">
     </div>
@@ -82,8 +22,8 @@
 
       // var data_domain = d3.extent(data, function(d) { return d.value;})
       var data_domain = d3.scale.linear()
-        .domain([0, 1000])
-        .range([0, 1000])
+      //   .domain([0, 1000])
+      //   .range([0, 1000])
 
       console.log("this is data-domain", data_domain)
       var dot_height = d3.scale.linear()
@@ -116,7 +56,7 @@
         console.log(time_extent)
 
         var x_scale = d3.time.scale().range([0, width]);
-        var y_scale = d3.scale.linear().range([height -30, 0]);
+        var y_scale = d3.scale.linear().range([height -50, 0]);
         var r_scale = d3.scale.linear().range([1, 4]);
 
         var x_axis = d3.svg.axis()
@@ -143,7 +83,7 @@
         console.log("heyeheyehye this is d3.values(data): ", d3.values(data));
 
         svg.append("g")
-          .attr("transform", "translate(0, " +(height - 20) +")")
+          .attr("transform", "translate(0, " +(height - 40) +")")
           .attr("class", "axis")
           .call(x_axis)
           .selectAll("text")
@@ -153,12 +93,12 @@
             .attr("transform", "rotate(-65)" )
 
 
-        // svg.append("g")
-        //   // .attr("transform", "translate(0, " +(height - 20) +")")
-        //   .attr("class", "axis")
-        //   .call(y_axis)
-        //   .selectAll("text")
-        //     .style("text-anchor", "end")
+        svg.append("g")
+          // .attr("transform", "translate(0, " +(height - 20) +")")
+          .attr("class", "axis")
+          .call(y_axis)
+          .selectAll("text")
+            .style("text-anchor", "end")
 
 
         svg.selectAll("circle")
@@ -173,6 +113,4 @@
           // });
 
       });
-    </script> -->
-  </body>
-</html>
+    </script>
