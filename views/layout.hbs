@@ -4,20 +4,72 @@
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.js"></script>
+    <style media="screen">
+      html, body, div, span, applet, object, iframe,
+      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+      a, abbr, acronym, address, big, cite, code,
+      del, dfn, em, img, ins, kbd, q, s, samp,
+      small, strike, strong, sub, sup, tt, var,
+      b, u, i, center,
+      dl, dt, dd, ol, ul, li,
+      fieldset, form, label, legend,
+      table, caption, tbody, tfoot, thead, tr, th, td,
+      article, aside, canvas, details, embed,
+      figure, figcaption, footer, header, hgroup,
+      menu, nav, output, ruby, section, summary,
+      time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      /* HTML5 display-role reset for older browsers */
+      article, aside, details, figcaption, figure,
+      footer, header, hgroup, menu, nav, section {
+        display: block;
+      }
+      body {
+        line-height: 1;
+      }
+      ol, ul {
+        list-style: none;
+      }
+      blockquote, q {
+        quotes: none;
+      }
+      blockquote:before, blockquote:after,
+      q:before, q:after {
+        content: '';
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      axis {
+        margin-bottom: 50px;
+      }
+      .tick {
+        text-anchor: end;
+      }
+    </style>
   </head>
   <body>
       {{{body}}}
 
-    <div id="content">
-        <h1>Title</h1>
+    <div id="lightChart">
+    </div>
+    <div id="soilChart">
     </div>
 
     <script type="text/javascript">
       var sensorData = {};
       var data;
       var margin = {top: 40, right: 40, bottom: 40, left:40},
-          width = window.innerWidth - 100,
-          height = window.innerHeight - 300;
+          width = window.innerWidth - 50,
+          height = window.innerHeight - 100;
 
       var time_scale = d3.time.scale()
         .range([margin, width])
@@ -33,8 +85,8 @@
         // .domain(data_domain)
         .range([0, height])
 
-      var svg = d3.select("#content").append("svg")
-        .attr("viewBox", "0 0 " + width + " " + height)
+      var svg = d3.select("#lightChart").append("svg")
+        .attr("viewBox", "0 0 " + (width ) + " " + (height + 140))
         .attr("width", width)
         .attr("height", height);
 
@@ -46,8 +98,8 @@
         })
         data = data.map(function(d) {
           return {
-            lightVal : d.light / 100,
-            soilVal : d.soil / 100,
+            lightVal : d.light,
+            soilVal : d.soil,
             date:  new Date(d.createDate)
           };
         });
@@ -59,8 +111,19 @@
         console.log(time_extent)
 
         var x_scale = d3.time.scale().range([0, width]);
-        var y_scale = d3.scale.linear().range([height, 0]);
-        var r_scale = d3.scale.linear().range([1, 5])
+        var y_scale = d3.scale.linear().range([height -30, 0]);
+        var r_scale = d3.scale.linear().range([1, 4]);
+
+        var x_axis = d3.svg.axis()
+          .scale(x_scale)
+          .orient("bottom")
+          .tickFormat(d3.time.format("%x-%X"))
+          .ticks(10)
+
+        var y_axis = d3.svg.axis()
+          .scale(y_scale)
+          .orient("right")
+          .ticks(8)
 
         x_scale.domain(d3.extent(d3.values(data), function(d) {
           return d.date;
@@ -72,7 +135,26 @@
           return d.soilVal
         }))
         console.log("YOOOO right herrree: ", data)
-        console.log("heyeheyehye this is d3.values(data): ", d3.values(data))
+        console.log("heyeheyehye this is d3.values(data): ", d3.values(data));
+
+        svg.append("g")
+          .attr("transform", "translate(0, " +(height - 20) +")")
+          .attr("class", "axis")
+          .call(x_axis)
+          .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", "rotate(-65)" )
+
+
+        svg.append("g")
+          .attr("transform", "translate(0, " +(height - 20) +")")
+          .attr("class", "axis")
+          .call(y_axis)
+          .selectAll("text")
+            .style("text-anchor", "end")
+
 
         svg.selectAll("circle")
           .data(d3.values(data))
@@ -83,28 +165,6 @@
           .attr("r", function(d) { return r_scale(d["soilVal"]); })
           // .attr("fill", function(d) {
           //   return country_attrs[d.id]["color"];
-          // });
-
-          // var x = d3.time.scale()
-          //   .domain([new Date(data[0].date), d3.time.hour.offset(new Date(data[data.length - 1].date), 1)])
-          //   .rangeRound([0, width - margin.left - margin.right]);
-          //
-          // var y = d3.scale.linear()
-          //   .domain([0, d3.max(data, function(d) { return d.total; })])
-          //   .range([height - margin.top - margin.bottom, 0]);
-          //
-          // var xAxis = d3.svg.axis()
-          //   .scale(x)
-          //   .orient('bottom')
-          //   .ticks(d3.time.days, 1)
-          //   .tickFormat(d3.time.format('%a %d'))
-          //   .tickSize(0)
-          //   .tickPadding(8);
-          //
-          // var yAxis = d3.svg.axis()
-          //   .scale(y)
-          //   .orient('left')
-          //   .tickPadding(8);
           // });
 
       });
