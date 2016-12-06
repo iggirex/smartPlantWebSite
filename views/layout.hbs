@@ -16,13 +16,22 @@
       var sensorData = {};
       var data;
       var margin = {top: 40, right: 40, bottom: 40, left:40},
-          width = window.innerWidth,
-          height = window.innerHeight;
+          width = window.innerWidth - 100,
+          height = window.innerHeight - 300;
 
-      var x_scale = d3.scale.linear().range([0, width]);
-      var y_scale = d3.scale.linear().range([height, 0]);
+      var time_scale = d3.time.scale()
+        .range([margin, width])
+        // .domain(time_extent)
 
-      
+      // var data_domain = d3.extent(data, function(d) { return d.value;})
+      var data_domain = d3.scale.linear()
+        .domain([0, 1000])
+        .range([0, 1000])
+
+      console.log("this is data-domain", data_domain)
+      var dot_height = d3.scale.linear()
+        // .domain(data_domain)
+        .range([0, height])
 
       var svg = d3.select("#content").append("svg")
         .attr("viewBox", "0 0 " + width + " " + height)
@@ -31,14 +40,27 @@
 
       d3.json("https://smartplant-sensordb.herokuapp.com/sensordata", function(error, data) {
         if (error) return console.warn(error);
-        console.log(data);
-        data.forEach(function(d) {
-          data[d.createDate] = {
-            lightVal : d.light,
-            soilVal : d.soil,
-            date: d.createDate
+        data = data.filter(function(data) {
+          if (!data.light) return false
+          else return true;
+        })
+        data = data.map(function(d) {
+          return {
+            lightVal : d.light / 100,
+            soilVal : d.soil / 100,
+            date:  new Date(d.createDate)
           };
         });
+
+        var time_extent = d3.extent(data, function(d) {
+          console.log(d['date'])
+            return d['date'];
+        })
+        console.log(time_extent)
+
+        var x_scale = d3.time.scale().range([0, width]);
+        var y_scale = d3.scale.linear().range([height, 0]);
+        var r_scale = d3.scale.linear().range([1, 5])
 
         x_scale.domain(d3.extent(d3.values(data), function(d) {
           return d.date;
@@ -46,6 +68,9 @@
         y_scale.domain(d3.extent(d3.values(data), function(d) {
           return d.lightVal;
         }));
+        r_scale.domain(d3.extent(d3.values(data), function(d) {
+          return d.soilVal
+        }))
         console.log("YOOOO right herrree: ", data)
         console.log("heyeheyehye this is d3.values(data): ", d3.values(data))
 
@@ -53,9 +78,9 @@
           .data(d3.values(data))
           .enter()
           .append("circle")
-          .attr("cx", function(d) { return d["lightVal"]; })
-          .attr("cy", function(d) { return d["soilVal"]; })
-          .attr("r", 5)
+          .attr("cx", function(d) { return x_scale(d["date"]); })
+          .attr("cy", function(d) { return y_scale(d["lightVal"]); })
+          .attr("r", function(d) { return r_scale(d["soilVal"]); })
           // .attr("fill", function(d) {
           //   return country_attrs[d.id]["color"];
           // });
