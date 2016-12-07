@@ -74,8 +74,9 @@
 
 .card {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   width: 30%;
   margin: 30px;
   height: 100px;
@@ -106,7 +107,22 @@
   background-image: url("/images/screen.jpg");
 }
 
+.cardDescript {
+  margin: 20px;
+  margin-top: 40px;
+  color: white;
+}
+
+.cardHead {
+  margin: 20px;
+  color: white;
+  font-size: 40px;
+}
+
 .parallaxTwo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   min-height: 400px;
   background-image: url("/images/smallCilantro.jpg");
@@ -114,6 +130,15 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  color: white;
+  font-size: 40px;
+  font-weight: 600;
+}
+.parImg {
+  height: 30px;
+}
+.parallaxDescript {
+  margin: 20px;
 }
 
 .footer {
