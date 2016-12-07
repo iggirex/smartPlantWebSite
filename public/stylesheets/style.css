@@ -69,6 +69,7 @@
 #sectiony {
   padding-bottom: 0;
   padding-top: 0;
+  margin-bottom: -10px;
 }
 
 .card {
@@ -119,11 +120,13 @@
   background-color: #A97C73;
   color: white;
   margin: 0 auto;
+  margin-bottom: 0 auto;
   height: 100px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  vertical-align: middle;
 }
 .contactDivs {
   display: flex;
