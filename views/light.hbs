@@ -1,8 +1,6 @@
 <h3>Light Levels</h3>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.js"></script>
 
-
-
     <div id="lightChart">
     </div>
     <div id="soilChart">
@@ -98,7 +96,6 @@
           .call(y_axis)
           .selectAll("text")
             .style("text-anchor", "end")
-
 
         svg.selectAll("circle")
           .data(d3.values(data))
