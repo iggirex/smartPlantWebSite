@@ -301,7 +301,7 @@
         .attr("width", width)
         .attr("height", height);
 
-      d3.json(datum, function(error, data) {
+      d3.json("./datum", function(error, data) {
         if (error) return console.warn(error);
         data = data.filter(function(data) {
           if (!data.light) return false
