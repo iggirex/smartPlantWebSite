@@ -8,12 +8,273 @@
     </div>
 
     <script type="text/javascript">
-      var express = require('express');
 
-      var cors = require('cors')
-
-      var app = express();
-      app.use(cors());
+  var datum =  [
+                  {
+                  "_id": "5852d8c63eb0d90011f680f9",
+                  "light": 5646,
+                  "soil": 34477,
+                  "createDate": "2016-12-15T17:54:14.709Z"
+                  },
+                  {
+                  "_id": "5852d8c93eb0d90011f680fa",
+                  "light": 4624,
+                  "soil": 27272,
+                  "createDate": "2016-12-15T17:54:17.672Z"
+                  },
+                  {
+                  "_id": "5852d8cc3eb0d90011f680fb",
+                  "light": 5480,
+                  "soil": 34424,
+                  "createDate": "2016-12-15T17:54:20.630Z"
+                  },
+                  {
+                  "_id": "5852d8cf3eb0d90011f680fc",
+                  "light": 5183,
+                  "soil": 32726,
+                  "createDate": "2016-12-15T17:54:23.600Z"
+                  },
+                  {
+                  "_id": "5852d8d23eb0d90011f680fd",
+                  "light": 5157,
+                  "soil": 32692,
+                  "createDate": "2016-12-15T17:54:26.621Z"
+                  },
+                  {
+                  "_id": "5852d8d53eb0d90011f680fe",
+                  "light": 5439,
+                  "soil": 34377,
+                  "createDate": "2016-12-15T17:54:29.617Z"
+                  },
+                  {
+                  "_id": "5852d8d83eb0d90011f680ff",
+                  "light": 5165,
+                  "soil": 32244,
+                  "createDate": "2016-12-15T17:54:32.587Z"
+                  },
+                  {
+                  "_id": "5852d8db3eb0d90011f68100",
+                  "light": 5411,
+                  "soil": 34489,
+                  "createDate": "2016-12-15T17:54:35.564Z"
+                  },
+                  {
+                  "_id": "5852d8de3eb0d90011f68101",
+                  "light": 4566,
+                  "soil": 29189,
+                  "createDate": "2016-12-15T17:54:38.517Z"
+                  },
+                  {
+                  "_id": "5852d8e13eb0d90011f68102",
+                  "light": 5114,
+                  "soil": 34419,
+                  "createDate": "2016-12-15T17:54:41.543Z"
+                  },
+                  {
+                  "_id": "5852d8e43eb0d90011f68103",
+                  "light": 5391,
+                  "soil": 34441,
+                  "createDate": "2016-12-15T17:54:44.501Z"
+                  },
+                  {
+                  "_id": "5852d8e73eb0d90011f68104",
+                  "light": 4587,
+                  "soil": 29278,
+                  "createDate": "2016-12-15T17:54:47.458Z"
+                  },
+                  {
+                  "_id": "5852d8ea3eb0d90011f68105",
+                  "light": 5388,
+                  "soil": 34368,
+                  "createDate": "2016-12-15T17:54:50.563Z"
+                  },
+                  {
+                  "_id": "5852d8ed3eb0d90011f68106",
+                  "light": 4565,
+                  "soil": 29166,
+                  "createDate": "2016-12-15T17:54:53.519Z"
+                  },
+                  {
+                  "_id": "5852d8f03eb0d90011f68107",
+                  "light": 5061,
+                  "soil": 34163,
+                  "createDate": "2016-12-15T17:54:56.551Z"
+                  },
+                  {
+                  "_id": "5852d8f33eb0d90011f68108",
+                  "light": 5350,
+                  "soil": 34241,
+                  "createDate": "2016-12-15T17:54:59.522Z"
+                  },
+                  {
+                  "_id": "5852d8f63eb0d90011f68109",
+                  "light": 5576,
+                  "soil": 30366,
+                  "createDate": "2016-12-15T17:55:02.617Z"
+                  },
+                  {
+                  "_id": "5852d8f93eb0d90011f6810a",
+                  "light": 2363,
+                  "soil": 34507,
+                  "createDate": "2016-12-15T17:55:05.527Z"
+                  },
+                  {
+                  "_id": "5852d8fc3eb0d90011f6810b",
+                  "light": 293,
+                  "soil": 20914,
+                  "createDate": "2016-12-15T17:55:08.414Z"
+                  },
+                  {
+                  "_id": "5852d8ff3eb0d90011f6810c",
+                  "light": 434,
+                  "soil": 34503,
+                  "createDate": "2016-12-15T17:55:11.365Z"
+                  },
+                  {
+                  "_id": "5852d9023eb0d90011f6810d",
+                  "light": 420,
+                  "soil": 34297,
+                  "createDate": "2016-12-15T17:55:14.267Z"
+                  },
+                  {
+                  "_id": "5852d9053eb0d90011f6810e",
+                  "light": 616,
+                  "soil": 29019,
+                  "createDate": "2016-12-15T17:55:17.243Z"
+                  },
+                  {
+                  "_id": "5852d9083eb0d90011f6810f",
+                  "light": 37696,
+                  "soil": 34172,
+                  "createDate": "2016-12-15T17:55:20.771Z"
+                  },
+                  {
+                  "_id": "5852d91b3eb0d90011f68110",
+                  "light": 942396,
+                  "soil": 34201,
+                  "createDate": "2016-12-15T17:55:39.230Z"
+                  },
+                  {
+                  "_id": "5852d93c3eb0d90011f68111",
+                  "light": 1856398,
+                  "soil": 34110,
+                  "createDate": "2016-12-15T17:56:12.634Z"
+                  },
+                  {
+                  "_id": "5852d9603eb0d90011f68112",
+                  "light": 2000342,
+                  "soil": 34091,
+                  "createDate": "2016-12-15T17:56:48.339Z"
+                  },
+                  {
+                  "_id": "5852d9843eb0d90011f68113",
+                  "light": 2038699,
+                  "soil": 34001,
+                  "createDate": "2016-12-15T17:57:24.637Z"
+                  },
+                  {
+                  "_id": "5852d9a93eb0d90011f68114",
+                  "light": 2052636,
+                  "soil": 33836,
+                  "createDate": "2016-12-15T17:58:01.339Z"
+                  },
+                  {
+                  "_id": "5852d9ce3eb0d90011f68115",
+                  "light": 2067974,
+                  "soil": 33872,
+                  "createDate": "2016-12-15T17:58:38.232Z"
+                  },
+                  {
+                  "_id": "5852d9f33eb0d90011f68116",
+                  "light": 2075306,
+                  "soil": 33843,
+                  "createDate": "2016-12-15T17:59:15.254Z"
+                  },
+                  {
+                  "_id": "5852da183eb0d90011f68117",
+                  "light": 2083845,
+                  "soil": 33904,
+                  "createDate": "2016-12-15T17:59:52.385Z"
+                  },
+                  {
+                  "_id": "5852da3d3eb0d90011f68118",
+                  "light": 2082758,
+                  "soil": 33820,
+                  "createDate": "2016-12-15T18:00:29.580Z"
+                  },
+                  {
+                  "_id": "5852da623eb0d90011f68119",
+                  "light": 2084172,
+                  "soil": 33814,
+                  "createDate": "2016-12-15T18:01:06.774Z"
+                  },
+                  {
+                  "_id": "5852da883eb0d90011f6811a",
+                  "light": 2086910,
+                  "soil": 33838,
+                  "createDate": "2016-12-15T18:01:44.034Z"
+                  },
+                  {
+                  "_id": "5852daad3eb0d90011f6811b",
+                  "light": 2089846,
+                  "soil": 33806,
+                  "createDate": "2016-12-15T18:02:21.267Z"
+                  },
+                  {
+                  "_id": "5852dad23eb0d90011f6811c",
+                  "light": 2094177,
+                  "soil": 33784,
+                  "createDate": "2016-12-15T18:02:58.623Z"
+                  },
+                  {
+                  "_id": "5852daf73eb0d90011f6811d",
+                  "light": 2088674,
+                  "soil": 33729,
+                  "createDate": "2016-12-15T18:03:35.877Z"
+                  },
+                  {
+                  "_id": "5852db1d3eb0d90011f6811e",
+                  "light": 2107023,
+                  "soil": 33777,
+                  "createDate": "2016-12-15T18:04:13.387Z"
+                  },
+                  {
+                  "_id": "5852db433eb0d90011f6811f",
+                  "light": 2111012,
+                  "soil": 33830,
+                  "createDate": "2016-12-15T18:04:51.050Z"
+                  },
+                  {
+                  "_id": "5852db693eb0d90011f68120",
+                  "light": 2179239,
+                  "soil": 33774,
+                  "createDate": "2016-12-15T18:05:29.990Z"
+                  },
+                  {
+                  "_id": "5852dba63eb0d90011f68121",
+                  "light": 3499067,
+                  "soil": 33787,
+                  "createDate": "2016-12-15T18:06:30.383Z"
+                  },
+                  {
+                  "_id": "5852dc063eb0d90011f68122",
+                  "light": 5600941,
+                  "soil": 33780,
+                  "createDate": "2016-12-15T18:08:06.061Z"
+                  },
+                  {
+                  "_id": "5852dc5f3eb0d90011f68123",
+                  "light": 5246653,
+                  "soil": 33730,
+                  "createDate": "2016-12-15T18:09:35.126Z"
+                  },
+                  {
+                  "_id": "5852dc7a3eb0d90011f68124",
+                  "light": 1498824,
+                  "soil": 33997,
+                  "createDate": "2016-12-15T18:10:02.511Z"
+                  }
+                ];
 
       var sensorData = {};
       var data;
@@ -40,7 +301,7 @@
         .attr("width", width)
         .attr("height", height);
 
-      d3.json("https://smartplant-sensordb.herokuapp.com/sensordata", function(error, data) {
+      d3.json(datum, function(error, data) {
         if (error) return console.warn(error);
         data = data.filter(function(data) {
           if (!data.light) return false
