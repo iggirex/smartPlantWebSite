@@ -8,6 +8,13 @@
     </div>
 
     <script type="text/javascript">
+      var express = require('express');
+
+      var cors = require('cors')
+
+      var app = express();
+      app.use(cors());
+
       var sensorData = {};
       var data;
       var margin = {top: 40, right: 40, bottom: 40, left:40},
